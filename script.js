@@ -37,6 +37,12 @@ $(function () {
             let previousData = JSON.parse(localStorage.getItem("User_Data"))||{}
             console.log("!!!!!!!!!!!!!!", Object.entries(previousData));
             let arrayPreviousData = Object.entries(previousData);
+            
+        for (let i = 0; i < arrayPreviousData.length; i++){
+            console.log("---------", $(`#${arrayPreviousData[i][0]}`))
+            $(`#${arrayPreviousData[i][0]}`).children("textarea").val(arrayPreviousData[i][1]);
+        }
+
         }
     //
     // TODO: Add code to get any user input that was saved in localStorage and set

@@ -25,42 +25,35 @@ $(function () {
         
         console.log(userData);  
         let userData_serialized = JSON.stringify(userData);
-        localStorage.setItem("User_Data", userData_serialized);               
+        localStorage.setItem("User_Data", userData_serialized);         
   
       }) 
 
     // TODO: Add code to apply the past, present, or future class to each time  & add code to get any user input that was saved in localStorage and set
-        function checkTense(){
-            console.log(timeSlots)     
-            // timeSlots[0].className = "row future"
-            console.log(timeSlots[0].className)
+        function checkTense(){                
+            
             let previousData = JSON.parse(localStorage.getItem("User_Data"))||{}
             console.log("!!!!!!!!!!!!!!", Object.entries(previousData));
             let arrayPreviousData = Object.entries(previousData);            
             
-            for (let i = 0; i < arrayPreviousData.length; i++){
-                console.log("---------", $(`#${arrayPreviousData[i][0]}`))
+            for (let i = 0; i < arrayPreviousData.length; i++){                
                 $(`#${arrayPreviousData[i][0]}`).children("textarea").val(arrayPreviousData[i][1]);
             }
 
             for (var i = 0; i < timeSlots.length;i++){
                 let myId = timeSlots[i].id;
                 let myhour = myId.slice(5);
-                console.log(myhour);
-                let newhour = parseInt(myhour);        
-                console.log(newhour);
-                console.log(timeSlots[i].className)
+                
+                let newhour = parseInt(myhour);    
+
                 if (currentHour > newhour){
-                    timeSlots[i].className = "row time-block past"
-                    console.log(timeSlots[i].className)
+                    timeSlots[i].className = "row time-block past";                    
                 }
                 else if(currentHour === newhour){
-                    timeSlots[i].className = "row time-block present"
-                    console.log(timeSlots[i].className)
+                    timeSlots[i].className = "row time-block present";                    
                 }
                 else{
-                    timeSlots[i].className = "row time-block future"
-                    console.log(timeSlots[i].className)
+                    timeSlots[i].className = "row time-block future";                    
                 }
             }
 
@@ -71,7 +64,7 @@ $(function () {
         let currentTime = dayjs().format("MM DD, YYYY")
         displayTime.text(currentTime);
       }
-          
+
       toDisplayTime();
       setInterval(toDisplayTime, 1000);
       checkTense();

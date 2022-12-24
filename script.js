@@ -23,14 +23,12 @@ $(function () {
           // time: timeRange, 
           // taskItem: userInput       
         
-        console.log(userData);
-  
+        console.log(userData);  
         let userData_serialized = JSON.stringify(userData);
-        localStorage.setItem("User_Data", userData_serialized)
-        
-                
+        localStorage.setItem("User_Data", userData_serialized);               
   
-      })       
+      }) 
+
     // TODO: Add code to apply the past, present, or future class to each time
     // block by comparing the id to the current hour. HINTS: How can the id
     // attribute of each time-block be used to conditionally add or remove the
@@ -42,4 +40,12 @@ $(function () {
     // attribute of each time-block be used to do this?
     //
     // TODO: Add code to display the current date in the header of the page.
+    function toDisplayTime(){
+        let currentTime = dayjs().format("MM DD, YYYY")
+        displayTime.text(currentTime);
+      }
+    
+      toDisplayTime();
+
+
   });

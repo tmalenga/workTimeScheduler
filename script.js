@@ -17,6 +17,17 @@ $(function () {
         let timeRange = $(this).parent().attr("id");
         console.log(timeRange + "IT WORKS!! YAYAYA! - maybe but still YAYAYA");
         
+        //accessing local storage to update for any input saved by the user 
+        let userData = JSON.parse(localStorage.getItem("User_Data"))||{}  
+        userData[timeRange] = userInput;
+          // time: timeRange, 
+          // taskItem: userInput       
+        
+        console.log(userData);
+  
+        let userData_serialized = JSON.stringify(userData);
+        localStorage.setItem("User_Data", userData_serialized)
+        
                 
   
       })       

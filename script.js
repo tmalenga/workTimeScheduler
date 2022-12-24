@@ -43,6 +43,12 @@ $(function () {
             $(`#${arrayPreviousData[i][0]}`).children("textarea").val(arrayPreviousData[i][1]);
         }
 
+        for (var i = 0; i < timeSlots.length;i++){
+            let myId = timeSlots[i].id;
+            let myhour = myId.slice(5);
+            console.log(myhour);
+        }
+
         }
     //
     // TODO: Add code to get any user input that was saved in localStorage and set
